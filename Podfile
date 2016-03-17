@@ -1,2 +1,2 @@
-use_frameworks! # this allows you to use import Firebase
+pod 'RPSlidingMenu'
 pod 'Firebase', '>= 2.5.0'

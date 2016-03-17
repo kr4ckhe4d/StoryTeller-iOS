@@ -4,35 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Firebase.xcscheme</key>
+		<key>StoryTeller.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RPSlidingMenu.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>569735B422E0E4CEEFC5C6955AFDE3A5</key>
+		<key>0DF2567B1C91E57500157A15</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7EC635646A2A336668026F2751C04364</key>
+		<key>0DF256971C91E57500157A15</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AFC898F14455510D98647ED912EC317A</key>
+		<key>0DF256A21C91E57500157A15</key>
 		<dict>
 			<key>primary</key>
 			<true/>

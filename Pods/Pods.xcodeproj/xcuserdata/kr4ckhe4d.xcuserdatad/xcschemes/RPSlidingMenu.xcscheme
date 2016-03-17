@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0955FFF94A433B35B21141EA'
-               BlueprintName = 'Firebase'
+               BlueprintIdentifier = 'C33CD6C36032ECAF107208B3'
+               BlueprintName = 'RPSlidingMenu'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libFirebase.a'>
+               BuildableName = 'libRPSlidingMenu.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
