@@ -18,10 +18,16 @@ NSMutableDictionary *storyList;
 NSArray *array;
 NSURLSessionDownloadTask *getImageTask;
 
+
+NSURLSessionConfiguration *sessionConfig;
+NSURLSession *session;
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    session = [NSURLSession sessionWithConfiguration:sessionConfig
+                                                          delegate:nil delegateQueue:nil];
     
     Firebase *ref = [[Firebase alloc] initWithUrl: @"https://firetestapp123.firebaseio.com/mad"];
     
@@ -52,34 +58,21 @@ NSURLSessionDownloadTask *getImageTask;
 }
 
 - (void)customizeCell:(RPSlidingMenuCell *)slidingMenuCell forRow:(NSInteger)row {
-    
-   // NSLog(@"%@",[array objectAtIndex:row]);
-    
     slidingMenuCell.textLabel.text = [[array objectAtIndex:row] valueForKey:@"title"];
     slidingMenuCell.detailTextLabel.text = [[array objectAtIndex:row] valueForKey:@"story"];
     
     //Getting the Image and viewing it on the Image View
-    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
     NSString *imageURL = [[array objectAtIndex:row] valueForKey:@"link"];
     
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:sessionConfig
-                                                          delegate:self delegateQueue:nil];
-    
-    //getImageTask = [session downloadTaskWithURL:[NSURL URLWithString:imageURL]];
     getImageTask = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             
             UIImage *downloadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
 
             slidingMenuCell.backgroundImageView.image =downloadedImage;
-            //_imageView.image = downloadedImage;
-            //slidingMenuCell.backgroundImageView.image = downloadedImage;
-            
         });
     }];
     [getImageTask resume];
-    
 }
 
 //Image download Completion Handler
