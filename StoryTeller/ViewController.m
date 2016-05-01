@@ -7,20 +7,30 @@
 //
 
 #import "ViewController.h"
+#import "StoryViewController.h"
 #import "Firebase.h"
+#import "MainViewTopBarController.h"
+#import "GlobalVars.h"
+#import "LoginViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<UIScrollViewDelegate,UICollectionViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) CGFloat lastContentOffset;
 
 
 @end
 NSMutableDictionary *storyList;
 NSArray *array;
 NSURLSessionDownloadTask *getImageTask;
+NSString *detailedStory;
+NSInteger selectedRow;
 
+MainViewTopBarController *m1;
 
+NSString *urlImage;
 NSURLSessionConfiguration *sessionConfig;
 NSURLSession *session;
+UIImage *retrievedImage;
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -45,6 +55,8 @@ NSURLSession *session;
     } withCancelBlock:^(NSError *error) {
         NSLog(@"%@", error.description);
     }];
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -56,19 +68,136 @@ NSURLSession *session;
     NSLog(@"%lu",(unsigned long)[storyList count]);
     return [array count]; // returns menu count
 }
+-(void)abc{
+    NSLog(@"lol");
+}
+
+-(void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
+    NSLog(@"lol");
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        NSLog(@"did end dragging");
+    }
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (self.lastContentOffset > scrollView.contentOffset.y)
+    {
+        NSLog(@"Scrolling Up %f",scrollView.contentOffset.y);
+        if (m1==NULL) {
+            m1 = [[MainViewTopBarController alloc] init];
+            [m1.view setTag:11];
+        }
+        [self.view addSubview:m1];
+        CGPoint center = m1.center;
+        center.x = self.view.center.x;
+        center.y = -m1.bounds.size.height;
+        m1.center = center;
+        
+        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            
+            CGPoint newcenter = m1.center;
+            //newcenter.x = self.view.center.x;
+            
+            newcenter.y = m1.bounds.size.height/2;
+            m1.center = newcenter;
+            
+            
+        } completion:nil];
+
+    }
+    else if (self.lastContentOffset < scrollView.contentOffset.y)
+    {
+        if (m1==NULL) {
+            m1 = [[MainViewTopBarController alloc] init];
+            [m1.view setTag:11];
+
+        }
+        [self.view addSubview:m1];
+        CGPoint center = m1.center;
+        center.x = self.view.center.x;
+        center.y = -200;
+        m1.center = center;
+        
+        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            
+            CGPoint newcenter = m1.center;
+            //newcenter.x = self.view.center.x;
+            
+            newcenter.y = -m1.bounds.size.height;
+            m1.center = center;
+            
+            
+        } completion:nil];
+        NSLog(@"Scrolling Down");
+    }
+    self.lastContentOffset = scrollView.contentOffset.y;
+
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    NSLog(@"willbegin");
+    if (self.lastContentOffset > scrollView.contentOffset.y)
+    {
+        NSLog(@"Scrolling Up");
+    }
+    else if (self.lastContentOffset < scrollView.contentOffset.y)
+    {
+        NSLog(@"Scrolling Down");
+    }
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (m1==NULL) {
+        m1 = [[MainViewTopBarController alloc] init];
+        [m1.view setTag:11];
+
+    }
+    if (scrollView.contentOffset.y == 0) {
+        [self.view addSubview:m1];
+        CGPoint center = m1.center;
+        center.x = self.view.center.x;
+        center.y = -m1.bounds.size.height;
+        m1.center = center;
+        
+        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            
+            CGPoint newcenter = m1.center;
+            //newcenter.x = self.view.center.x;
+            
+            newcenter.y = m1.bounds.size.height/2;
+            m1.center = newcenter;
+            
+            
+        } completion:nil];
+    }
+    NSLog(@"did end decelerating");
+}
+
+//-(void) showLoginView{
+//    LoginViewController *loginv = [[LoginViewController alloc] init];
+//    
+//    [self.view addSubview:loginv];
+//    loginv.center = self.view.center;
+//}
 
 - (void)customizeCell:(RPSlidingMenuCell *)slidingMenuCell forRow:(NSInteger)row {
+    
     slidingMenuCell.textLabel.text = [[array objectAtIndex:row] valueForKey:@"title"];
     slidingMenuCell.detailTextLabel.text = [[array objectAtIndex:row] valueForKey:@"story"];
+    detailedStory = [NSString stringWithFormat:@"%@",[[array objectAtIndex:row] valueForKey:@"story"]];
     
     //Getting the Image and viewing it on the Image View
     NSString *imageURL = [[array objectAtIndex:row] valueForKey:@"link"];
-    
+    urlImage = [NSString stringWithFormat:@"%ld",(long)row];
     getImageTask = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             
             UIImage *downloadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-
+            retrievedImage = downloadedImage;
             slidingMenuCell.backgroundImageView.image =downloadedImage;
         });
     }];
@@ -93,11 +222,37 @@ NSURLSession *session;
 
 - (void)slidingMenu:(RPSlidingMenuViewController *)slidingMenu didSelectItemAtRow:(NSInteger)row {
     // when a row is tapped do some action like go to another view controller
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Row Tapped"
-                                                    message:[NSString stringWithFormat:@"Row %d tapped.", row]
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+    
+    [self performSegueWithIdentifier:@"STORY" sender:self];
+    selectedRow = row;
+    urlImage = [NSString stringWithFormat:@"%ld",(long)row];
+
+   NSLog(@"%ld",(long)selectedRow);
+    
+    }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    StoryViewController *storyView = (StoryViewController *)segue.destinationViewController;
+        //Getting the Image and viewing it on the Image View
+   NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
+   NSLog(@"%ld",(long)[indexPath row]);
+    NSInteger row = [indexPath row];
+    
+    storyView.story = [NSString stringWithFormat:@"%@",[[array objectAtIndex:row] valueForKey:@"story"]];
+    storyView.storyTitle = [[array objectAtIndex:row] valueForKey:@"title"];
+    
+    //Getting the Image and viewing it on the Image View
+    NSString *imageURL = [[array objectAtIndex:row] valueForKey:@"link"];
+    urlImage = [NSString stringWithFormat:@"%ld",(long)row];
+    getImageTask = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            UIImage *downloadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+            //retrievedImage = downloadedImage;
+            storyView.storyImage.image =downloadedImage;
+            storyView.background.image =downloadedImage;
+        });
+    }];
+    [getImageTask resume];
 }
 @end

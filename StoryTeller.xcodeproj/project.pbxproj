@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D79DC981C9D1EEE0060774B /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79DC971C9D1EEE0060774B /* StoryViewController.m */; };
+		0DB2D63D1CD5C43500797250 /* MainViewTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2D63C1CD5C43500797250 /* MainViewTopBar.xib */; };
+		0DB2D6411CD5C4CB00797250 /* MainViewTopBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D6401CD5C4CB00797250 /* MainViewTopBarController.m */; };
+		0DB2D6431CD5D0E300797250 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2D6421CD5D0E300797250 /* LoginView.xib */; };
+		0DB2D6461CD5D10100797250 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D6451CD5D10100797250 /* LoginViewController.m */; };
+		0DB2D64B1CD5EFF400797250 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB2D6481CD5EFF400797250 /* FBSDKCoreKit.framework */; };
+		0DB2D64C1CD5EFF400797250 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB2D6491CD5EFF400797250 /* FBSDKLoginKit.framework */; };
+		0DB2D64D1CD5EFF400797250 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB2D64A1CD5EFF400797250 /* FBSDKShareKit.framework */; };
+		0DB2D64F1CD603B300797250 /* MainViewBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2D64E1CD603B300797250 /* MainViewBottomBar.xib */; };
+		0DB2D6521CD603D300797250 /* MainViewBottomBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D6511CD603D300797250 /* MainViewBottomBarController.m */; };
+		0DB2D67B1CD616B200797250 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2D6791CD616B200797250 /* Main.storyboard */; };
 		0DF256811C91E57500157A15 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256801C91E57500157A15 /* main.m */; };
 		0DF256841C91E57500157A15 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256831C91E57500157A15 /* AppDelegate.m */; };
 		0DF256871C91E57500157A15 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256861C91E57500157A15 /* ViewController.m */; };
-		0DF2568A1C91E57500157A15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF256881C91E57500157A15 /* Main.storyboard */; };
 		0DF2568D1C91E57500157A15 /* StoryTeller.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DF2568B1C91E57500157A15 /* StoryTeller.xcdatamodeld */; };
 		0DF2568F1C91E57500157A15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DF2568E1C91E57500157A15 /* Assets.xcassets */; };
 		0DF256921C91E57500157A15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DF256901C91E57500157A15 /* LaunchScreen.storyboard */; };
@@ -37,13 +47,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D79DC961C9D1EEE0060774B /* StoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryViewController.h; sourceTree = "<group>"; };
+		0D79DC971C9D1EEE0060774B /* StoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryViewController.m; sourceTree = "<group>"; };
+		0DB2D63C1CD5C43500797250 /* MainViewTopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewTopBar.xib; path = StoryTeller/Xibs/MainViewTopBar.xib; sourceTree = "<group>"; };
+		0DB2D63F1CD5C4CB00797250 /* MainViewTopBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewTopBarController.h; path = "StoryTeller/Xib Controllers/MainViewTopBarController.h"; sourceTree = "<group>"; };
+		0DB2D6401CD5C4CB00797250 /* MainViewTopBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewTopBarController.m; path = "StoryTeller/Xib Controllers/MainViewTopBarController.m"; sourceTree = "<group>"; };
+		0DB2D6421CD5D0E300797250 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = StoryTeller/Xibs/LoginView.xib; sourceTree = "<group>"; };
+		0DB2D6441CD5D10100797250 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = "StoryTeller/Xib Controllers/LoginViewController.h"; sourceTree = "<group>"; };
+		0DB2D6451CD5D10100797250 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = "StoryTeller/Xib Controllers/LoginViewController.m"; sourceTree = "<group>"; };
+		0DB2D6471CD5D37400797250 /* GlobalVars.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalVars.h; sourceTree = "<group>"; };
+		0DB2D6481CD5EFF400797250 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		0DB2D6491CD5EFF400797250 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		0DB2D64A1CD5EFF400797250 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		0DB2D64E1CD603B300797250 /* MainViewBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewBottomBar.xib; path = StoryTeller/Xibs/MainViewBottomBar.xib; sourceTree = "<group>"; };
+		0DB2D6501CD603D300797250 /* MainViewBottomBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewBottomBarController.h; path = "StoryTeller/Xib Controllers/MainViewBottomBarController.h"; sourceTree = "<group>"; };
+		0DB2D6511CD603D300797250 /* MainViewBottomBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewBottomBarController.m; path = "StoryTeller/Xib Controllers/MainViewBottomBarController.m"; sourceTree = "<group>"; };
+		0DB2D67A1CD616B200797250 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0DF2567C1C91E57500157A15 /* StoryTeller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryTeller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF256801C91E57500157A15 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0DF256821C91E57500157A15 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0DF256831C91E57500157A15 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0DF256851C91E57500157A15 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0DF256861C91E57500157A15 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		0DF256891C91E57500157A15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0DF2568C1C91E57500157A15 /* StoryTeller.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StoryTeller.xcdatamodel; sourceTree = "<group>"; };
 		0DF2568E1C91E57500157A15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0DF256911C91E57500157A15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +89,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB2D64D1CD5EFF400797250 /* FBSDKShareKit.framework in Frameworks */,
 				4C2267E0F64EBD307858EEDE /* libPods.a in Frameworks */,
+				0DB2D64B1CD5EFF400797250 /* FBSDKCoreKit.framework in Frameworks */,
+				0DB2D64C1CD5EFF400797250 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,9 +113,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DB2D63B1CD5C2F400797250 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				0DB2D63C1CD5C43500797250 /* MainViewTopBar.xib */,
+				0DB2D6421CD5D0E300797250 /* LoginView.xib */,
+				0DB2D64E1CD603B300797250 /* MainViewBottomBar.xib */,
+			);
+			name = Xibs;
+			sourceTree = "<group>";
+		};
+		0DB2D63E1CD5C43F00797250 /* Xib Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0DB2D63F1CD5C4CB00797250 /* MainViewTopBarController.h */,
+				0DB2D6401CD5C4CB00797250 /* MainViewTopBarController.m */,
+				0DB2D6441CD5D10100797250 /* LoginViewController.h */,
+				0DB2D6451CD5D10100797250 /* LoginViewController.m */,
+				0DB2D6501CD603D300797250 /* MainViewBottomBarController.h */,
+				0DB2D6511CD603D300797250 /* MainViewBottomBarController.m */,
+			);
+			name = "Xib Controllers";
+			sourceTree = "<group>";
+		};
 		0DF256731C91E57500157A15 = {
 			isa = PBXGroup;
 			children = (
+				0DB2D63E1CD5C43F00797250 /* Xib Controllers */,
+				0DB2D63B1CD5C2F400797250 /* Xibs */,
 				0DF2567E1C91E57500157A15 /* StoryTeller */,
 				0DF2569B1C91E57500157A15 /* StoryTellerTests */,
 				0DF256A61C91E57500157A15 /* StoryTellerUITests */,
@@ -114,12 +167,15 @@
 				0DF256831C91E57500157A15 /* AppDelegate.m */,
 				0DF256851C91E57500157A15 /* ViewController.h */,
 				0DF256861C91E57500157A15 /* ViewController.m */,
-				0DF256881C91E57500157A15 /* Main.storyboard */,
+				0D79DC961C9D1EEE0060774B /* StoryViewController.h */,
+				0D79DC971C9D1EEE0060774B /* StoryViewController.m */,
 				0DF2568E1C91E57500157A15 /* Assets.xcassets */,
+				0DB2D6791CD616B200797250 /* Main.storyboard */,
 				0DF256901C91E57500157A15 /* LaunchScreen.storyboard */,
 				0DF256931C91E57500157A15 /* Info.plist */,
 				0DF2568B1C91E57500157A15 /* StoryTeller.xcdatamodeld */,
 				0DF2567F1C91E57500157A15 /* Supporting Files */,
+				0DB2D6471CD5D37400797250 /* GlobalVars.h */,
 			);
 			path = StoryTeller;
 			sourceTree = "<group>";
@@ -153,6 +209,9 @@
 		56F482C8C74A642DC82FCD25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DB2D6481CD5EFF400797250 /* FBSDKCoreKit.framework */,
+				0DB2D6491CD5EFF400797250 /* FBSDKLoginKit.framework */,
+				0DB2D64A1CD5EFF400797250 /* FBSDKShareKit.framework */,
 				C3FAAF68E5DC30EB959054D9 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -278,7 +337,10 @@
 			files = (
 				0DF256921C91E57500157A15 /* LaunchScreen.storyboard in Resources */,
 				0DF2568F1C91E57500157A15 /* Assets.xcassets in Resources */,
-				0DF2568A1C91E57500157A15 /* Main.storyboard in Resources */,
+				0DB2D6431CD5D0E300797250 /* LoginView.xib in Resources */,
+				0DB2D67B1CD616B200797250 /* Main.storyboard in Resources */,
+				0DB2D64F1CD603B300797250 /* MainViewBottomBar.xib in Resources */,
+				0DB2D63D1CD5C43500797250 /* MainViewTopBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,8 +415,12 @@
 			files = (
 				0DF256871C91E57500157A15 /* ViewController.m in Sources */,
 				0DF2568D1C91E57500157A15 /* StoryTeller.xcdatamodeld in Sources */,
+				0D79DC981C9D1EEE0060774B /* StoryViewController.m in Sources */,
 				0DF256841C91E57500157A15 /* AppDelegate.m in Sources */,
+				0DB2D6461CD5D10100797250 /* LoginViewController.m in Sources */,
 				0DF256811C91E57500157A15 /* main.m in Sources */,
+				0DB2D6521CD603D300797250 /* MainViewBottomBarController.m in Sources */,
+				0DB2D6411CD5C4CB00797250 /* MainViewTopBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,10 +456,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0DF256881C91E57500157A15 /* Main.storyboard */ = {
+		0DB2D6791CD616B200797250 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0DF256891C91E57500157A15 /* Base */,
+				0DB2D67A1CD616B200797250 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -494,6 +560,10 @@
 			baseConfigurationReference = DD9A79493F1E85F77686F140 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = StoryTeller/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nipunasapp.StoryTeller;
@@ -506,6 +576,10 @@
 			baseConfigurationReference = 81D6A7C297A91F569EC72054 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = StoryTeller/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nipunasapp.StoryTeller;
