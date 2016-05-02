@@ -103,6 +103,8 @@
         FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
         [loginManager logOut];
         
+        [mvCtrller removeFromSuperview];
+
         status = 0;
         
         CGPoint c = self.view.center;

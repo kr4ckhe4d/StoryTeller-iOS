@@ -7,11 +7,17 @@
 //
 
 #import "MainViewBottomBarController.h"
+#import "NewStoryViewController.h"
+
 
 @interface MainViewBottomBarController(){
     CGSize _intrinsicContentSize;
+    NewStoryViewController *newStory;
+    
 }
+
 @end
+
 @implementation MainViewBottomBarController
 
 /*
@@ -35,5 +41,21 @@
 }
 -(CGSize)intrinsicContentSize{
     return _intrinsicContentSize;
+}
+- (IBAction)newStoryButtonClicked:(UIButton *)sender {
+//    if (newStory == NULL) {
+//        newStory = [[NewStoryViewController alloc] init];
+//    }
+//    [[[self superview] viewWithTag:0] addSubview:newStory];
+//    CGPoint c = [[self superview] viewWithTag:0].center;
+//    newStory.view.center = c;
+    
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main"
+                                                         bundle:nil];
+    newStory = [storyboard instantiateViewControllerWithIdentifier:@"NewStoryView"];
+    
+    [self.window.rootViewController presentViewController:newStory
+                       animated:YES
+                     completion:nil];
 }
 @end

@@ -7,10 +7,13 @@
 //
 
 #import "GlobalVars.h"
+#import "MainViewBottomBarController.h"
+
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @implementation GlobalVars
 
 int status;
+MainViewBottomBarController *mvCtrller;
 @end

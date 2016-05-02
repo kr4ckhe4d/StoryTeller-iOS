@@ -141,6 +141,25 @@
             </objects>
             <point key="canvasLocation" x="1680" y="401"/>
         </scene>
+        <!--New Story View Controller-->
+        <scene sceneID="Srt-8M-c0h">
+            <objects>
+                <viewController storyboardIdentifier="NewStoryView" id="o1f-SY-G3V" customClass="NewStoryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="egL-Gf-Yrr"/>
+                        <viewControllerLayoutGuide type="bottom" id="87c-94-qsX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3HH-th-OTq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f1j-ed-mAF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2115" y="401"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="AJB-95-Qbh">
             <objects>

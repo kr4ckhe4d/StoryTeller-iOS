@@ -1,13 +1,19 @@
 PODS:
   - Firebase (2.5.1)
+  - jot (0.1.5):
+    - Masonry (~> 0.6.1)
+  - Masonry (0.6.4)
   - RPSlidingMenu (1.0.3)
 
 DEPENDENCIES:
   - Firebase (>= 2.5.0)
+  - jot
   - RPSlidingMenu
 
 SPEC CHECKSUMS:
   Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  jot: 0f5dc333defa6ad805d01adc3834b201c22510a7
+  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   RPSlidingMenu: 6e15173d9f483e96bf38c3bec9b5435cefb5e8d3
 
 COCOAPODS: 0.39.0

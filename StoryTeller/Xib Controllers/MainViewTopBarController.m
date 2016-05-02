@@ -142,9 +142,11 @@
         userProfile.center = c;
         
         [UIView animateWithDuration:1.0 animations:^{
-            CGPoint center = userProfile.center;
-            center.y = [[self superview] viewWithTag:0].center.y;
-            userProfile.center = center;
+//            CGPoint center = userProfile.center;
+//            center.y = [[self superview] viewWithTag:0].center.y;
+//            userProfile.center = center;
+            userProfile.frame = self.window.rootViewController.view.frame;
+            
             [self removeFromSuperview];
         } completion:nil];
         

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MainViewBottomBarController.h"
 
 @interface GlobalVars : NSObject
 extern int  status;
-
+extern MainViewBottomBarController *mvCtrller;
 @end

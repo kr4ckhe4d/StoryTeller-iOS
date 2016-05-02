@@ -21,6 +21,8 @@
 		0DB2D6801CD656A200797250 /* UserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2D67F1CD656A200797250 /* UserProfileView.xib */; };
 		0DB2D6851CD657A300797250 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D6841CD657A300797250 /* UserProfileViewController.m */; };
 		0DB2D68B1CD7254400797250 /* GlobalVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D68A1CD7254400797250 /* GlobalVars.m */; };
+		0DB2D6921CD741C400797250 /* NewStoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2D6911CD741C400797250 /* NewStoryView.xib */; };
+		0DB2D69B1CD7487800797250 /* NewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D69A1CD7487800797250 /* NewStoryViewController.m */; };
 		0DF256811C91E57500157A15 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256801C91E57500157A15 /* main.m */; };
 		0DF256841C91E57500157A15 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256831C91E57500157A15 /* AppDelegate.m */; };
 		0DF256871C91E57500157A15 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256861C91E57500157A15 /* ViewController.m */; };
@@ -70,6 +72,9 @@
 		0DB2D6841CD657A300797250 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfileViewController.m; path = "StoryTeller/Xib Controllers/UserProfileViewController.m"; sourceTree = "<group>"; };
 		0DB2D6891CD7254400797250 /* GlobalVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVars.h; sourceTree = "<group>"; };
 		0DB2D68A1CD7254400797250 /* GlobalVars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVars.m; sourceTree = "<group>"; };
+		0DB2D6911CD741C400797250 /* NewStoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewStoryView.xib; path = StoryTeller/Xibs/NewStoryView.xib; sourceTree = "<group>"; };
+		0DB2D6991CD7487800797250 /* NewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoryViewController.h; sourceTree = "<group>"; };
+		0DB2D69A1CD7487800797250 /* NewStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoryViewController.m; sourceTree = "<group>"; };
 		0DF2567C1C91E57500157A15 /* StoryTeller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryTeller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF256801C91E57500157A15 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0DF256821C91E57500157A15 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,6 +132,7 @@
 				0DB2D6421CD5D0E300797250 /* LoginView.xib */,
 				0DB2D64E1CD603B300797250 /* MainViewBottomBar.xib */,
 				0DB2D67F1CD656A200797250 /* UserProfileView.xib */,
+				0DB2D6911CD741C400797250 /* NewStoryView.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -179,6 +185,8 @@
 				0DF256861C91E57500157A15 /* ViewController.m */,
 				0D79DC961C9D1EEE0060774B /* StoryViewController.h */,
 				0D79DC971C9D1EEE0060774B /* StoryViewController.m */,
+				0DB2D6991CD7487800797250 /* NewStoryViewController.h */,
+				0DB2D69A1CD7487800797250 /* NewStoryViewController.m */,
 				0DF2568E1C91E57500157A15 /* Assets.xcassets */,
 				0DB2D6791CD616B200797250 /* Main.storyboard */,
 				0DF256901C91E57500157A15 /* LaunchScreen.storyboard */,
@@ -353,6 +361,7 @@
 				0DB2D67B1CD616B200797250 /* Main.storyboard in Resources */,
 				0DB2D64F1CD603B300797250 /* MainViewBottomBar.xib in Resources */,
 				0DB2D63D1CD5C43500797250 /* MainViewTopBar.xib in Resources */,
+				0DB2D6921CD741C400797250 /* NewStoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +438,7 @@
 				0DB2D6851CD657A300797250 /* UserProfileViewController.m in Sources */,
 				0DF256871C91E57500157A15 /* ViewController.m in Sources */,
 				0DF2568D1C91E57500157A15 /* StoryTeller.xcdatamodeld in Sources */,
+				0DB2D69B1CD7487800797250 /* NewStoryViewController.m in Sources */,
 				0D79DC981C9D1EEE0060774B /* StoryViewController.m in Sources */,
 				0DF256841C91E57500157A15 /* AppDelegate.m in Sources */,
 				0DB2D6461CD5D10100797250 /* LoginViewController.m in Sources */,

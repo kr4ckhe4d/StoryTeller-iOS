@@ -134,25 +134,28 @@ UIImage *retrievedImage;
             
         } completion:nil];
         
-        
-        if (bottomBar == NULL) {
-            bottomBar = [[MainViewBottomBarController alloc] init];
+        if (status == 1) {
+            if (mvCtrller == NULL) {
+                mvCtrller = [[MainViewBottomBarController alloc] init];
+            }
+            [mvCtrller setTag:99];
+            [self.view addSubview:mvCtrller];
+            CGPoint bottomBarCenter = mvCtrller.center;
+            bottomBarCenter.x = self.view.center.x;
+            bottomBarCenter.y = self.view.bounds.size.height + mvCtrller.bounds.size.height*2;
+            mvCtrller.center = bottomBarCenter;
+            
+            [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+                
+                CGPoint newBottombarCenter = mvCtrller.center;
+                //newcenter.x = self.view.center.x;
+                
+                newBottombarCenter.y = self.view.bounds.size.height-mvCtrller.bounds.size.height/2;
+                mvCtrller.center = newBottombarCenter;
+                
+            } completion:nil];
+
         }
-        [self.view addSubview:bottomBar];
-        CGPoint bottomBarCenter = bottomBar.center;
-        bottomBarCenter.x = self.view.center.x;
-        bottomBarCenter.y = self.view.bounds.size.height + bottomBar.bounds.size.height*2;
-        bottomBar.center = bottomBarCenter;
-        
-        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
-            
-            CGPoint newBottombarCenter = bottomBar.center;
-            //newcenter.x = self.view.center.x;
-            
-            newBottombarCenter.y = self.view.bounds.size.height-bottomBar.bounds.size.height/2;
-            bottomBar.center = newBottombarCenter;
-            
-        } completion:nil];
         
         NSLog(@"Scrolling Down");
     }
