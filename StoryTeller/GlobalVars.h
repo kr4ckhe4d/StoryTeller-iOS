@@ -2,13 +2,13 @@
 //  GlobalVars.h
 //  StoryTeller
 //
-//  Created by Nipuna H Herath on 5/1/16.
+//  Created by Nipuna H Herath on 5/2/16.
 //  Copyright © 2016 Nipuna H Herath. All rights reserved.
 //
 
-#ifndef GlobalVars_h
-#define GlobalVars_h
+#import <Foundation/Foundation.h>
 
-extern int status;
+@interface GlobalVars : NSObject
+extern int  status;
 
-#endif /* GlobalVars_h */
+@end

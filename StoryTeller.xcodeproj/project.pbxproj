@@ -18,6 +18,9 @@
 		0DB2D64F1CD603B300797250 /* MainViewBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2D64E1CD603B300797250 /* MainViewBottomBar.xib */; };
 		0DB2D6521CD603D300797250 /* MainViewBottomBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D6511CD603D300797250 /* MainViewBottomBarController.m */; };
 		0DB2D67B1CD616B200797250 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2D6791CD616B200797250 /* Main.storyboard */; };
+		0DB2D6801CD656A200797250 /* UserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2D67F1CD656A200797250 /* UserProfileView.xib */; };
+		0DB2D6851CD657A300797250 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D6841CD657A300797250 /* UserProfileViewController.m */; };
+		0DB2D68B1CD7254400797250 /* GlobalVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D68A1CD7254400797250 /* GlobalVars.m */; };
 		0DF256811C91E57500157A15 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256801C91E57500157A15 /* main.m */; };
 		0DF256841C91E57500157A15 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256831C91E57500157A15 /* AppDelegate.m */; };
 		0DF256871C91E57500157A15 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256861C91E57500157A15 /* ViewController.m */; };
@@ -55,7 +58,6 @@
 		0DB2D6421CD5D0E300797250 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginView.xib; path = StoryTeller/Xibs/LoginView.xib; sourceTree = "<group>"; };
 		0DB2D6441CD5D10100797250 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = "StoryTeller/Xib Controllers/LoginViewController.h"; sourceTree = "<group>"; };
 		0DB2D6451CD5D10100797250 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = "StoryTeller/Xib Controllers/LoginViewController.m"; sourceTree = "<group>"; };
-		0DB2D6471CD5D37400797250 /* GlobalVars.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalVars.h; sourceTree = "<group>"; };
 		0DB2D6481CD5EFF400797250 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		0DB2D6491CD5EFF400797250 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		0DB2D64A1CD5EFF400797250 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -63,6 +65,11 @@
 		0DB2D6501CD603D300797250 /* MainViewBottomBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewBottomBarController.h; path = "StoryTeller/Xib Controllers/MainViewBottomBarController.h"; sourceTree = "<group>"; };
 		0DB2D6511CD603D300797250 /* MainViewBottomBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewBottomBarController.m; path = "StoryTeller/Xib Controllers/MainViewBottomBarController.m"; sourceTree = "<group>"; };
 		0DB2D67A1CD616B200797250 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0DB2D67F1CD656A200797250 /* UserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = UserProfileView.xib; path = StoryTeller/Xibs/UserProfileView.xib; sourceTree = "<group>"; };
+		0DB2D6831CD657A300797250 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserProfileViewController.h; path = "StoryTeller/Xib Controllers/UserProfileViewController.h"; sourceTree = "<group>"; };
+		0DB2D6841CD657A300797250 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserProfileViewController.m; path = "StoryTeller/Xib Controllers/UserProfileViewController.m"; sourceTree = "<group>"; };
+		0DB2D6891CD7254400797250 /* GlobalVars.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVars.h; sourceTree = "<group>"; };
+		0DB2D68A1CD7254400797250 /* GlobalVars.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVars.m; sourceTree = "<group>"; };
 		0DF2567C1C91E57500157A15 /* StoryTeller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryTeller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF256801C91E57500157A15 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0DF256821C91E57500157A15 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -119,6 +126,7 @@
 				0DB2D63C1CD5C43500797250 /* MainViewTopBar.xib */,
 				0DB2D6421CD5D0E300797250 /* LoginView.xib */,
 				0DB2D64E1CD603B300797250 /* MainViewBottomBar.xib */,
+				0DB2D67F1CD656A200797250 /* UserProfileView.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -132,6 +140,8 @@
 				0DB2D6451CD5D10100797250 /* LoginViewController.m */,
 				0DB2D6501CD603D300797250 /* MainViewBottomBarController.h */,
 				0DB2D6511CD603D300797250 /* MainViewBottomBarController.m */,
+				0DB2D6831CD657A300797250 /* UserProfileViewController.h */,
+				0DB2D6841CD657A300797250 /* UserProfileViewController.m */,
 			);
 			name = "Xib Controllers";
 			sourceTree = "<group>";
@@ -175,7 +185,8 @@
 				0DF256931C91E57500157A15 /* Info.plist */,
 				0DF2568B1C91E57500157A15 /* StoryTeller.xcdatamodeld */,
 				0DF2567F1C91E57500157A15 /* Supporting Files */,
-				0DB2D6471CD5D37400797250 /* GlobalVars.h */,
+				0DB2D6891CD7254400797250 /* GlobalVars.h */,
+				0DB2D68A1CD7254400797250 /* GlobalVars.m */,
 			);
 			path = StoryTeller;
 			sourceTree = "<group>";
@@ -335,6 +346,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB2D6801CD656A200797250 /* UserProfileView.xib in Resources */,
 				0DF256921C91E57500157A15 /* LaunchScreen.storyboard in Resources */,
 				0DF2568F1C91E57500157A15 /* Assets.xcassets in Resources */,
 				0DB2D6431CD5D0E300797250 /* LoginView.xib in Resources */,
@@ -413,6 +425,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB2D68B1CD7254400797250 /* GlobalVars.m in Sources */,
+				0DB2D6851CD657A300797250 /* UserProfileViewController.m in Sources */,
 				0DF256871C91E57500157A15 /* ViewController.m in Sources */,
 				0DF2568D1C91E57500157A15 /* StoryTeller.xcdatamodeld in Sources */,
 				0D79DC981C9D1EEE0060774B /* StoryViewController.m in Sources */,

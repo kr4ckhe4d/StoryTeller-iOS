@@ -8,6 +8,10 @@
 
 #import "MainViewBottomBarController.h"
 
+@interface MainViewBottomBarController(){
+    CGSize _intrinsicContentSize;
+}
+@end
 @implementation MainViewBottomBarController
 
 /*
@@ -17,5 +21,19 @@
     // Drawing code
 }
 */
-
+-(instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [[NSBundle mainBundle] loadNibNamed:@"MainViewBottomBar" owner:self options:nil];
+        self.bounds = self.view.bounds;
+        _intrinsicContentSize = self.bounds.size;
+        
+        [self addSubview:self.view];
+        
+    }
+    return self;
+}
+-(CGSize)intrinsicContentSize{
+    return _intrinsicContentSize;
+}
 @end

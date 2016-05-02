@@ -8,6 +8,9 @@
 
 #import "MainViewTopBarController.h"
 #import "LoginViewController.h"
+#import "UserProfileViewController.h"
+#import "GlobalVars.h"
+
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 
@@ -15,6 +18,8 @@
     CGSize _intrinsicContentSize;
     LoginViewController *lvc1;
     FBSDKLoginButton *loginButton;
+    UserProfileViewController *userProfile;
+    
     __weak IBOutlet UIButton *loginButtonOutlet;
 }
 @end
@@ -42,9 +47,16 @@
             NSLog(@"facebook already connected");
             [loginButtonOutlet setTitle:@"Logout" forState:UIControlStateNormal];
             [loginButtonOutlet setImage:[UIImage imageNamed:@"proPicImage"] forState:UIControlStateNormal];
+            status = 1;
 
         }
+        else{
+            [loginButtonOutlet setTitle:@"Login" forState:UIControlStateNormal];
+            [loginButtonOutlet setImage:nil forState:UIControlStateNormal];
+            status = 0;
 
+        }
+        //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"topBarBackground"]]];
         
         [self addSubview:self.view];
         
@@ -59,6 +71,7 @@
     if ([loginButtonOutlet.titleLabel.text  isEqual: @"Login"]) {
         if (lvc1 == NULL) {
             lvc1 = [[LoginViewController alloc] init];
+            lvc1.view.layer.cornerRadius = 5.0;
             [lvc1 setTag:5];
             
         }
@@ -93,6 +106,7 @@
              action:@selector(loginButtonClicked) forControlEvents:UIControlEventTouchUpInside];
             
             // Add the button to the view
+            //[self removeFromSuperview];
             [lvc1.view addSubview:myLoginButton];
         }];
     }
@@ -105,14 +119,57 @@
             NSLog(@"facebook already connected");
         }
         
-        FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
-        [loginManager logOut];
+//        FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+//        [loginManager logOut];
+//        [loginButtonOutlet setImage:nil forState:UIControlStateNormal];
+//        [loginButtonOutlet setTitle:@"Login" forState:UIControlStateNormal];
+
         
-        [loginButtonOutlet setImage:nil forState:UIControlStateNormal];
-        [loginButtonOutlet setTitle:@"Login" forState:UIControlStateNormal];
+        
+        
+        //if (userProfile == NULL) {
+            userProfile = [[UserProfileViewController alloc] init];
+          //  [[[self superview] viewWithTag:0] addSubview:userProfile];
+       // }
+       // else{
+            [[[self superview] viewWithTag:0] addSubview:userProfile];
+
+      //  }
+      //
+        
+        CGPoint c = [[self superview] viewWithTag:0].center;
+        c.y = userProfile.bounds.size.height*2;
+        userProfile.center = c;
+        
+        [UIView animateWithDuration:1.0 animations:^{
+            CGPoint center = userProfile.center;
+            center.y = [[self superview] viewWithTag:0].center.y;
+            userProfile.center = center;
+            [self removeFromSuperview];
+        } completion:nil];
+        
     }
     
     
+}
+
+-(void)willMoveToSuperview:(UIView *)newSuperview{
+    if (status == 0) {
+        [loginButtonOutlet setTitle:@"Login" forState:UIControlStateNormal];
+    }
+    if (status == 1) {
+        [loginButtonOutlet setTitle:@"Logout" forState:UIControlStateNormal];
+    }
+}
+
+-(void)willMoveToWindow:(UIWindow *)newWindow{
+    if (status == 0) {
+        [loginButtonOutlet setTitle:@"Login" forState:UIControlStateNormal];
+        [loginButtonOutlet setImage:nil forState:UIControlStateNormal];
+    }
+    if (status == 1) {
+        [loginButtonOutlet setTitle:@"Logout" forState:UIControlStateNormal];
+    }
 }
 
 -(void)loginButtonClicked
@@ -130,6 +187,7 @@
              [lvc1 removeFromSuperview];
              [loginButtonOutlet setTitle:@"Logout" forState:UIControlStateNormal];
              [loginButtonOutlet setImage:[UIImage imageNamed:@"proPicImage"] forState:UIControlStateNormal];
+             status = 1;
              NSLog(@"Logged in");
              //[self fetchUserInfo];
 
@@ -137,30 +195,6 @@
      }];
 }
 
--(void)fetchUserInfo
-{
-    if ([FBSDKAccessToken currentAccessToken])
-    {
-        NSLog(@"Token is available : %@",[[FBSDKAccessToken currentAccessToken]tokenString]);
-        
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id, name, link, first_name, last_name, picture.type(large), email, birthday, bio ,location ,friends ,hometown , friendlists"}]
-         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-             if (!error)
-             {
-                 //NSLog(@"resultis:%@",result);
-                 NSLog(@"%@",[NSString stringWithFormat:@"%@",[[[result objectForKey:@"picture"] objectForKey:@"data"] objectForKey:@"url"]]);
-                 //UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:MyURL]]];
-
-             }
-             else
-             {
-                 NSLog(@"Error %@",error);
-             }
-         }];
-        
-    }
-    
-}
 
 -(CGSize)intrinsicContentSize{
     return _intrinsicContentSize;

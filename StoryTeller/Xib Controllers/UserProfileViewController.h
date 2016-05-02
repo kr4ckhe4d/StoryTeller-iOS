@@ -1,5 +1,5 @@
 //
-//  MainViewBottomBarController.h
+//  UserProfileViewController.h
 //  StoryTeller
 //
 //  Created by Nipuna H Herath on 5/1/16.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewBottomBarController : UIView
+@interface UserProfileViewController : UIView
 @property (strong, nonatomic) IBOutlet UIView *view;
 
 @end

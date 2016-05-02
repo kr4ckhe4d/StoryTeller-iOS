@@ -12,6 +12,7 @@
 #import "MainViewTopBarController.h"
 #import "GlobalVars.h"
 #import "LoginViewController.h"
+#import "MainViewBottomBarController.h"
 
 @interface ViewController ()<UIScrollViewDelegate,UICollectionViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -26,6 +27,7 @@ NSString *detailedStory;
 NSInteger selectedRow;
 
 MainViewTopBarController *m1;
+MainViewBottomBarController *bottomBar;
 
 NSString *urlImage;
 NSURLSessionConfiguration *sessionConfig;
@@ -130,8 +132,28 @@ UIImage *retrievedImage;
             newcenter.y = -m1.bounds.size.height;
             m1.center = center;
             
+        } completion:nil];
+        
+        
+        if (bottomBar == NULL) {
+            bottomBar = [[MainViewBottomBarController alloc] init];
+        }
+        [self.view addSubview:bottomBar];
+        CGPoint bottomBarCenter = bottomBar.center;
+        bottomBarCenter.x = self.view.center.x;
+        bottomBarCenter.y = self.view.bounds.size.height + bottomBar.bounds.size.height*2;
+        bottomBar.center = bottomBarCenter;
+        
+        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:^{
+            
+            CGPoint newBottombarCenter = bottomBar.center;
+            //newcenter.x = self.view.center.x;
+            
+            newBottombarCenter.y = self.view.bounds.size.height-bottomBar.bounds.size.height/2;
+            bottomBar.center = newBottombarCenter;
             
         } completion:nil];
+        
         NSLog(@"Scrolling Down");
     }
     self.lastContentOffset = scrollView.contentOffset.y;
