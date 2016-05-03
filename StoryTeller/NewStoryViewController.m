@@ -12,6 +12,8 @@
 @import AssetsLibrary;
 @import Photos;
 #import <Masonry/Masonry.h>
+#import "Firebase.h"
+
 
 
 @interface NewStoryViewController ()<UIImagePickerControllerDelegate>
@@ -23,20 +25,41 @@ UIButton *DrawModeBtn;
 UIButton *TextModeBtn;
 UIButton *AddImageBtn;
 UIButton *SaveImageBtn;
+
+UIButton *MainPageBtn;
+UIButton *AddOnePage;
+
+NSMutableArray *pagesArray;
+
+
 UIButton *closeViewControllerBtn;
 
 NSString *imageMode;
+
+int storycount;
 
 UIImage *imageBackground;
 UIImage *drawnImage;
 UIImageView *previewImage;
 
 CGFloat buttonWidth = 30;
-
+Firebase *ref;
 @implementation NewStoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    ref = [[Firebase alloc] initWithUrl:@"https://firetestapp123.firebaseio.com/mad"];
+    
+    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        storycount = [snapshot.value count];
+        NSLog(@"%d",snapshot.childrenCount);
+        
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
+    }];
+
+    
+    
     _jotViewController = [JotViewController new];
     self.jotViewController.delegate = self;
     
@@ -49,6 +72,16 @@ CGFloat buttonWidth = 30;
 
     imageMode = @"NoBackground";
     
+    MainPageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [MainPageBtn addTarget:self
+                    action:@selector(showMainPage:)
+          forControlEvents:UIControlEventTouchUpInside];
+    [MainPageBtn setTitle:@"Main Page" forState:UIControlStateNormal];
+    [MainPageBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [MainPageBtn setBackgroundColor:[UIColor blueColor]];
+    //[MainPageBtn setImage:[UIImage imageNamed:@"pencil"] forState:UIControlStateNormal];
+    MainPageBtn.frame = CGRectMake(20, 100, 100 , 100);
+    [_jotViewController.view addSubview:MainPageBtn];
     
     
     DrawModeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -113,30 +146,183 @@ CGFloat buttonWidth = 30;
 
 #pragma mark - button actions
 
+-(void)showMainPage:(UIButton *)sender{
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Publish Story"
+                                                                              message: @"Input title and summary"
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Title";
+        textField.textColor = [UIColor blueColor];
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+    }];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Summary";
+        textField.textColor = [UIColor blueColor];
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        textField.borderStyle = UITextBorderStyleRoundedRect;
+    }];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSArray * textfields = alertController.textFields;
+        UITextField * titlefield = textfields[0];
+        UITextField * summaryfiled = textfields[1];
+        NSLog(@"%@:%@",titlefield.text,summaryfiled.text);
+        
+        
+        
+        
+        NSString *urlString = [NSString stringWithFormat:@"http://192.168.1.2/uploader/test.php"];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:urlString]];
+        [request setHTTPMethod:@"POST"];
+        
+        
+        NSString *boundary = @"------VohpleBoundary4QuqLuM1cE5lMwCy";
+        
+        
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+        [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+        
+        NSMutableData *body = [NSMutableData data];
+        
+        
+        //Populate a dictionary with all the regular values you would like to send.
+        NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+        
+        [parameters setValue:[NSString stringWithFormat:@"%@",titlefield.text] forKey:@"param1-name"];
+        
+        [parameters setValue:@"lol" forKey:@"param2-name"];
+        
+        [parameters setValue:@"lol" forKey:@"param3-name"];
+        
+        
+        // add params (all params are strings)
+        for (NSString *param in parameters) {
+            [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", param] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"%@\r\n", [parameters objectForKey:param]] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+        
+        
+        for (int i = 0 ; i<[pagesArray count]; i++) {
+//            NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+//            
+//            [parameters setValue:[NSString stringWithFormat:@"%d",i] forKey:@"fileindex"];
+//            [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+//            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", param] dataUsingEncoding:NSUTF8StringEncoding]];
+//            [body appendData:[[NSString stringWithFormat:@"%@\r\n", [parameters objectForKey:param]] dataUsingEncoding:NSUTF8StringEncoding]];
+//            
+//            
+            
+            NSData *imageData = UIImagePNGRepresentation(pagesArray[i]);
+            
+            //NSMutableData *body = [NSMutableData data];
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"uploadedfile%d\"; filename=\"%d.png\"\r\n",i,i] dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            
+            [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[NSData dataWithData:imageData]];
+            [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+        
+            [request setHTTPBody:body];
+            
+            //    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+            //
+            //
+            //    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+            //
+            //    NSLog(@"Image Return String: %@", returnString);
+            
+            NSURLSessionUploadTask *session = [[NSURLSession sharedSession] uploadTaskWithRequest:request fromData:nil completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                
+                NSString *returnString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                
+                NSLog(@"Image Return String: %@", returnString);
+                
+                NSString *linkfield = [NSString stringWithFormat:@"http://192.168.1.2/uploader/%@/0.png",titlefield.text];
+                
+                
+                NSDictionary *alanisawesome = @{
+                                                @"link" : linkfield,
+                                                @"story": summaryfiled.text,
+                                                @"title":titlefield.text
+                                                };
+                Firebase *alanRef = [ref childByAppendingPath: [NSString stringWithFormat:@"%d",storycount]];
+                [alanRef setValue: alanisawesome];
+            }];
+            
+            [session resume];
+        
+        NSLog(@"done");
+
+        
+        
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+    
+    
+    
+    
+    NSLog(@"%lu",(unsigned long)[pagesArray count]);
+    
+    
+}
+
+
+
+
 -(void)saveImagePressed:(UIButton *)sender{
+    
     if ([imageMode  isEqual: @"WithBackground"]) {
         drawnImage = [self.jotViewController drawOnImage:imageBackground];
+        if (pagesArray == NULL) {
+            pagesArray = [[NSMutableArray alloc] init];
+
+        }
+        [pagesArray addObject:drawnImage];
+        [self.jotViewController clearAll];
+        [previewImage removeFromSuperview];
+        imageBackground = NULL;
+
+
     }
     else{
         drawnImage = [self.jotViewController renderImageWithScale:2.f
                                                           onColor:self.view.backgroundColor];
+
+        if (pagesArray == NULL) {
+            pagesArray = [[NSMutableArray alloc] init];
+            
+        }
+        [pagesArray addObject:drawnImage];
+        [self.jotViewController clearAll];
+        [previewImage removeFromSuperview];
+        imageBackground = NULL;
     }
     
-    [self.jotViewController clearAll];
     
     
-    ALAssetsLibrary *library = [ALAssetsLibrary new];
-    [library writeImageToSavedPhotosAlbum:[drawnImage CGImage]
-                              orientation:(ALAssetOrientation)[drawnImage imageOrientation]
-                          completionBlock:^(NSURL *assetURL, NSError *error){
-                              if (error) {
-                                  NSLog(@"Error saving photo: %@", error.localizedDescription);
-                              } else {
-                                  [previewImage removeFromSuperview];
-                                  imageBackground = NULL;
-                                  NSLog(@"Saved photo to saved photos album.");
-                              }
-                          }];
+    
+//
+//    [self.jotViewController clearAll];
+//    
+//    
+//    ALAssetsLibrary *library = [ALAssetsLibrary new];
+//    [library writeImageToSavedPhotosAlbum:[drawnImage CGImage]
+//                              orientation:(ALAssetOrientation)[drawnImage imageOrientation]
+//                          completionBlock:^(NSURL *assetURL, NSError *error){
+//                              if (error) {
+//                                  NSLog(@"Error saving photo: %@", error.localizedDescription);
+//                              } else {
+//                                  [previewImage removeFromSuperview];
+//                                  imageBackground = NULL;
+//                                  NSLog(@"Saved photo to saved photos album.");
+//                              }
+//                          }];
 
 }
 
@@ -183,6 +369,7 @@ CGFloat buttonWidth = 30;
 
 -(void)closeButtonPressed:(UIButton *)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
+    pagesArray = NULL;
 }
 /*
 #pragma mark - Navigation

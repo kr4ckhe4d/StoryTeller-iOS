@@ -21,7 +21,7 @@
 
 @end
 NSMutableDictionary *storyList;
-NSArray *array;
+NSMutableArray *array;
 NSURLSessionDownloadTask *getImageTask;
 NSString *detailedStory;
 NSInteger selectedRow;
@@ -49,6 +49,8 @@ UIImage *retrievedImage;
     [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"%@", snapshot.value);
         array = [NSMutableArray arrayWithArray:snapshot.value];
+        [array removeObjectIdenticalTo:[NSNull null]];
+
         //array = [storyList allValues];
         
         [self.collectionView reloadData];
@@ -67,7 +69,7 @@ UIImage *retrievedImage;
     // Dispose of any resources that can be recreated.
 }
 - (NSInteger)numberOfItemsInSlidingMenu {
-    NSLog(@"%lu",(unsigned long)[storyList count]);
+    //NSLog(@"%lu",(unsigned long)[storyList count]);
     return [array count]; // returns menu count
 }
 -(void)abc{
@@ -211,12 +213,12 @@ UIImage *retrievedImage;
 
 - (void)customizeCell:(RPSlidingMenuCell *)slidingMenuCell forRow:(NSInteger)row {
     
-    slidingMenuCell.textLabel.text = [[array objectAtIndex:row] valueForKey:@"title"];
-    slidingMenuCell.detailTextLabel.text = [[array objectAtIndex:row] valueForKey:@"story"];
-    detailedStory = [NSString stringWithFormat:@"%@",[[array objectAtIndex:row] valueForKey:@"story"]];
+    slidingMenuCell.textLabel.text = [array[row] valueForKey:@"title"];
+    slidingMenuCell.detailTextLabel.text = [array[row] valueForKey:@"story"];
+    detailedStory = [NSString stringWithFormat:@"%@",[array[row] valueForKey:@"story"]];
     
     //Getting the Image and viewing it on the Image View
-    NSString *imageURL = [[array objectAtIndex:row] valueForKey:@"link"];
+    NSString *imageURL = [array[row] valueForKey:@"link"];
     urlImage = [NSString stringWithFormat:@"%ld",(long)row];
     getImageTask = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -263,11 +265,11 @@ UIImage *retrievedImage;
    NSLog(@"%ld",(long)[indexPath row]);
     NSInteger row = [indexPath row];
     
-    storyView.story = [NSString stringWithFormat:@"%@",[[array objectAtIndex:row] valueForKey:@"story"]];
-    storyView.storyTitle = [[array objectAtIndex:row] valueForKey:@"title"];
+    storyView.story = [NSString stringWithFormat:@"%@",[array[row] valueForKey:@"story"]];
+    storyView.storyTitle = [array[row] valueForKey:@"title"];
     
     //Getting the Image and viewing it on the Image View
-    NSString *imageURL = [[array objectAtIndex:row] valueForKey:@"link"];
+    NSString *imageURL = [array[row] valueForKey:@"link"];
     urlImage = [NSString stringWithFormat:@"%ld",(long)row];
     getImageTask = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
