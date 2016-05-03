@@ -13,6 +13,7 @@
 #import "GlobalVars.h"
 #import "LoginViewController.h"
 #import "MainViewBottomBarController.h"
+#import "NFXIntroViewController.h"
 
 @interface ViewController ()<UIScrollViewDelegate,UICollectionViewDelegate>
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -21,13 +22,15 @@
 
 @end
 NSMutableDictionary *storyList;
-NSMutableArray *array;
+NSMutableDictionary *array;
 NSURLSessionDownloadTask *getImageTask;
 NSString *detailedStory;
 NSInteger selectedRow;
 
 MainViewTopBarController *m1;
 MainViewBottomBarController *bottomBar;
+
+NSArray *values;
 
 NSString *urlImage;
 NSURLSessionConfiguration *sessionConfig;
@@ -48,8 +51,15 @@ UIImage *retrievedImage;
     
     [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"%@", snapshot.value);
-        array = [NSMutableArray arrayWithArray:snapshot.value];
-        [array removeObjectIdenticalTo:[NSNull null]];
+        
+        //NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:snapshot.value];
+        
+        
+        array = [NSMutableDictionary dictionaryWithDictionary:snapshot.value];
+        //[array removeObjectIdenticalTo:[NSNull null]];
+        values = [array allValues];
+        
+        NSLog(@"%@",values);
 
         //array = [storyList allValues];
         
@@ -213,12 +223,12 @@ UIImage *retrievedImage;
 
 - (void)customizeCell:(RPSlidingMenuCell *)slidingMenuCell forRow:(NSInteger)row {
     
-    slidingMenuCell.textLabel.text = [array[row] valueForKey:@"title"];
-    slidingMenuCell.detailTextLabel.text = [array[row] valueForKey:@"story"];
-    detailedStory = [NSString stringWithFormat:@"%@",[array[row] valueForKey:@"story"]];
+    slidingMenuCell.textLabel.text = [values[row] valueForKey:@"title"];
+    slidingMenuCell.detailTextLabel.text = [values[row] valueForKey:@"story"];
+    detailedStory = [NSString stringWithFormat:@"%@",[values[row] valueForKey:@"story"]];
     
     //Getting the Image and viewing it on the Image View
-    NSString *imageURL = [array[row] valueForKey:@"link"];
+    NSString *imageURL = [values[row] valueForKey:@"link"];
     urlImage = [NSString stringWithFormat:@"%ld",(long)row];
     getImageTask = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -250,25 +260,51 @@ UIImage *retrievedImage;
 - (void)slidingMenu:(RPSlidingMenuViewController *)slidingMenu didSelectItemAtRow:(NSInteger)row {
     // when a row is tapped do some action like go to another view controller
     
-    [self performSegueWithIdentifier:@"STORY" sender:self];
+    //[self performSegueWithIdentifier:@"STORY" sender:self];
     selectedRow = row;
     urlImage = [NSString stringWithFormat:@"%ld",(long)row];
 
    NSLog(@"%ld",(long)selectedRow);
     
+
+    
+    //Getting the Image and viewing it on the Image View
+    
+    int pages = [[values[row] objectForKey:@"pages"] intValue];
+    
+    NSMutableArray *imagesArray = [[NSMutableArray alloc] init];
+    
+    
+    for (int i = 0; i<pages; i++) {
+        //Getting the Image and viewing it on the Image View
+        NSString *imageURL = [NSString stringWithFormat:@"http://192.168.1.2/uploader/%@/%d.png",[values[row] objectForKey:@"title"],i];
+        
+        
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+        
+        UIImage *img = [[UIImage alloc] initWithData:data];
+        
+        [imagesArray addObject:img];
+     
+    }
+    
+    //storyView.storyData = [NSArray arrayWithObject:[array[row] allObjects]];
+    NFXIntroViewController *vc = [[NFXIntroViewController alloc] initWithViews:imagesArray storydata:[NSDictionary dictionaryWithObjectsAndKeys:[values[row] objectForKey:@"link"],@"link",[values[row] objectForKey:@"pages"],@"pages",[values[row] objectForKey:@"story"],@"story",[values[row] objectForKey:@"title"],@"title", nil]];
+    NSLog(@"%@",[values[row] objectForKey:@"link"]);
+    [self presentViewController:vc animated:true completion:nil];
+
+    
     }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    StoryViewController *storyView = (StoryViewController *)segue.destinationViewController;
+   // StoryViewController *storyView = (StoryViewController *)segue.destinationViewController;
         //Getting the Image and viewing it on the Image View
    NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
 
    NSLog(@"%ld",(long)[indexPath row]);
     NSInteger row = [indexPath row];
     
-    storyView.storyData = [NSArray arrayWithObject:[array[row] allObjects]];
     
-
 //    storyView.story = [NSString stringWithFormat:@"%@",[array[row] valueForKey:@"story"]];
 //    storyView.storyTitle = [array[row] valueForKey:@"title"];
     

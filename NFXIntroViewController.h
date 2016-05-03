@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NFXIntroViewController : UIViewController
--(id)initWithViews:(NSArray*)images storydata:(NSArray *)storydata;
+-(id)initWithViews:(NSArray*)images storydata:(NSDictionary *)storydata;
 @end

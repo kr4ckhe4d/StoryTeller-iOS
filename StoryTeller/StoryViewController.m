@@ -18,6 +18,18 @@
 @implementation StoryViewController
 
 -(void)viewWillAppear:(BOOL)animated{
+    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+//    self.title = self.storyTitle;
+//    self.lblStory.text = self.story;
+//    self.lblTitle.text = self.storyTitle;
+//    //self.background.image = self.storyImage.image;
+//    self.background.alpha = 0.6;
+//    self.lblStory.lineBreakMode = NSLineBreakByWordWrapping;
+//    self.lblStory.numberOfLines = 0;
     UIImage*i1 = [UIImage imageNamed:@"closeButton"];
     UIImage*i2 = [UIImage imageNamed:@"newImage"];
     UIImage*i3 = [UIImage imageNamed:@"pencil"];
@@ -33,17 +45,6 @@
     NFXIntroViewController *vc = [[NFXIntroViewController alloc] initWithViews:@[i1,i2,i3,i4,i5,i2,i6,i7] storydata:_storyData];
     NSLog(@"%@",_storyData);
     [self presentViewController:vc animated:true completion:nil];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-//    self.title = self.storyTitle;
-//    self.lblStory.text = self.story;
-//    self.lblTitle.text = self.storyTitle;
-//    //self.background.image = self.storyImage.image;
-//    self.background.alpha = 0.6;
-//    self.lblStory.lineBreakMode = NSLineBreakByWordWrapping;
-//    self.lblStory.numberOfLines = 0;
     
     
     // Do any additional setup after loading the view.

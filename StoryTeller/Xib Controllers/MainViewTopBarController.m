@@ -191,6 +191,7 @@
              [loginButtonOutlet setImage:[UIImage imageNamed:@"proPicImage"] forState:UIControlStateNormal];
              status = 1;
              NSLog(@"Logged in");
+             NSLog(@"%@",result);
              //[self fetchUserInfo];
 
          }

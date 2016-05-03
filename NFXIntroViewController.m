@@ -38,6 +38,7 @@
         self.view.backgroundColor = [UIColor blackColor];
         self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         _images = images;
+        NSLog(@"%@",storydata);
         
         /**
          *  positions

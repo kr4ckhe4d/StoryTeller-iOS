@@ -10,13 +10,13 @@
 
 
 @interface StoryViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *storyImage;
-@property (weak, nonatomic) IBOutlet UILabel *lblStory;
-@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
-@property (nonatomic) NSString *story;
-@property (nonatomic) NSString *storyTitle;
-@property (weak, nonatomic) IBOutlet UIImageView *background;
+//@property (weak, nonatomic) IBOutlet UIImageView *storyImage;
+//@property (weak, nonatomic) IBOutlet UILabel *lblStory;
+//@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+//@property (nonatomic) NSString *story;
+//@property (nonatomic) NSString *storyTitle;
+//@property (weak, nonatomic) IBOutlet UIImageView *background;
 
 @property (nonatomic,retain) NSArray *storyData;
-@property (nonatomic) int *row;
+//@property (nonatomic) int *row;
 @end

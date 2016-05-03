@@ -68,7 +68,8 @@ Firebase *ref;
     [self.jotViewController didMoveToParentViewController:self];
     self.jotViewController.view.frame = self.view.frame;
     self.jotViewController.textColor = [UIColor blackColor];
-    
+    self.jotViewController.fitOriginalFontSizeToViewWidth = YES;
+
 
     imageMode = @"NoBackground";
     
@@ -243,15 +244,20 @@ Firebase *ref;
                 NSLog(@"Image Return String: %@", returnString);
                 
                 NSString *linkfield = [NSString stringWithFormat:@"http://192.168.1.2/uploader/%@/0.png",titlefield.text];
-                
+                NSString *pagecount = [NSString stringWithFormat:@"%d",[pagesArray count] ];
                 
                 NSDictionary *alanisawesome = @{
                                                 @"link" : linkfield,
                                                 @"story": summaryfiled.text,
-                                                @"title":titlefield.text
+                                                @"title":titlefield.text,
+                                                @"pages":pagecount
                                                 };
-                Firebase *alanRef = [ref childByAppendingPath: [NSString stringWithFormat:@"%d",storycount]];
+                Firebase *alanRef = [ref childByAppendingPath: [NSString stringWithFormat:@"%da",storycount+1]];
                 [alanRef setValue: alanisawesome];
+                
+                
+                
+                
             }];
             
             [session resume];
