@@ -17,5 +17,6 @@
 @property (nonatomic) NSString *storyTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *background;
 
+@property (nonatomic,retain) NSArray *storyData;
 @property (nonatomic) int *row;
 @end

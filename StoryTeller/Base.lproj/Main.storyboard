@@ -114,7 +114,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vx6-ao-4dV">
                                 <rect key="frame" x="10" y="25" width="50" height="50"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
-                                <state key="normal" title="Back" image="backButton"/>
+                                <state key="normal" image="backButton"/>
                                 <connections>
                                     <action selector="btnBack:" destination="fTy-HY-pnt" eventType="touchUpInside" id="35B-iS-qkz"/>
                                 </connections>

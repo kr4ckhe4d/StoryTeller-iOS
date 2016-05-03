@@ -23,6 +23,7 @@
 		0DB2D68B1CD7254400797250 /* GlobalVars.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D68A1CD7254400797250 /* GlobalVars.m */; };
 		0DB2D6921CD741C400797250 /* NewStoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DB2D6911CD741C400797250 /* NewStoryView.xib */; };
 		0DB2D69B1CD7487800797250 /* NewStoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D69A1CD7487800797250 /* NewStoryViewController.m */; };
+		0DB2D6D01CD899E800797250 /* NFXIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2D6CF1CD899E800797250 /* NFXIntroViewController.m */; };
 		0DF256811C91E57500157A15 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256801C91E57500157A15 /* main.m */; };
 		0DF256841C91E57500157A15 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256831C91E57500157A15 /* AppDelegate.m */; };
 		0DF256871C91E57500157A15 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF256861C91E57500157A15 /* ViewController.m */; };
@@ -75,6 +76,8 @@
 		0DB2D6911CD741C400797250 /* NewStoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewStoryView.xib; path = StoryTeller/Xibs/NewStoryView.xib; sourceTree = "<group>"; };
 		0DB2D6991CD7487800797250 /* NewStoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStoryViewController.h; sourceTree = "<group>"; };
 		0DB2D69A1CD7487800797250 /* NewStoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStoryViewController.m; sourceTree = "<group>"; };
+		0DB2D6CE1CD899E800797250 /* NFXIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFXIntroViewController.h; sourceTree = "<group>"; };
+		0DB2D6CF1CD899E800797250 /* NFXIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFXIntroViewController.m; sourceTree = "<group>"; };
 		0DF2567C1C91E57500157A15 /* StoryTeller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryTeller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF256801C91E57500157A15 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0DF256821C91E57500157A15 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -152,9 +155,19 @@
 			name = "Xib Controllers";
 			sourceTree = "<group>";
 		};
+		0DB2D6CD1CD899CB00797250 /* NFXIntroViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0DB2D6CE1CD899E800797250 /* NFXIntroViewController.h */,
+				0DB2D6CF1CD899E800797250 /* NFXIntroViewController.m */,
+			);
+			name = NFXIntroViewControllers;
+			sourceTree = "<group>";
+		};
 		0DF256731C91E57500157A15 = {
 			isa = PBXGroup;
 			children = (
+				0DB2D6CD1CD899CB00797250 /* NFXIntroViewControllers */,
 				0DB2D63E1CD5C43F00797250 /* Xib Controllers */,
 				0DB2D63B1CD5C2F400797250 /* Xibs */,
 				0DF2567E1C91E57500157A15 /* StoryTeller */,
@@ -444,6 +457,7 @@
 				0DB2D6461CD5D10100797250 /* LoginViewController.m in Sources */,
 				0DF256811C91E57500157A15 /* main.m in Sources */,
 				0DB2D6521CD603D300797250 /* MainViewBottomBarController.m in Sources */,
+				0DB2D6D01CD899E800797250 /* NFXIntroViewController.m in Sources */,
 				0DB2D6411CD5C4CB00797250 /* MainViewTopBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

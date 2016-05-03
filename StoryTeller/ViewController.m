@@ -262,24 +262,29 @@ UIImage *retrievedImage;
     StoryViewController *storyView = (StoryViewController *)segue.destinationViewController;
         //Getting the Image and viewing it on the Image View
    NSIndexPath *indexPath = [[self.collectionView indexPathsForSelectedItems] lastObject];
+
    NSLog(@"%ld",(long)[indexPath row]);
     NSInteger row = [indexPath row];
     
-    storyView.story = [NSString stringWithFormat:@"%@",[array[row] valueForKey:@"story"]];
-    storyView.storyTitle = [array[row] valueForKey:@"title"];
+    storyView.storyData = [NSArray arrayWithObject:[array[row] allObjects]];
+    
+
+//    storyView.story = [NSString stringWithFormat:@"%@",[array[row] valueForKey:@"story"]];
+//    storyView.storyTitle = [array[row] valueForKey:@"title"];
     
     //Getting the Image and viewing it on the Image View
-    NSString *imageURL = [array[row] valueForKey:@"link"];
-    urlImage = [NSString stringWithFormat:@"%ld",(long)row];
-    getImageTask = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            UIImage *downloadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-            //retrievedImage = downloadedImage;
-            storyView.storyImage.image =downloadedImage;
-            storyView.background.image =downloadedImage;
-        });
-    }];
-    [getImageTask resume];
+//    NSString *imageURL = [array[row] valueForKey:@"link"];
+//    urlImage = [NSString stringWithFormat:@"%ld",(long)row];
+//    getImageTask = [session downloadTaskWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]] completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            
+//            UIImage *downloadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+//            //retrievedImage = downloadedImage;
+//            storyView.storyImage.image =downloadedImage;
+//            storyView.background.image =downloadedImage;
+//            storyView.storyData = array[row];
+//        });
+//    }];
+//    [getImageTask resume];
 }
 @end
